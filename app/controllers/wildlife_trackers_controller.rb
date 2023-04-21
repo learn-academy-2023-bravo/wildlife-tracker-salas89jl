@@ -7,7 +7,7 @@ class WildlifeTrackersController < ApplicationController
 
     def show
         animal = WildlifeTracker.find(params[:id])
-        render json: animal
+        render json: animal, include: [:sigthing]
     end
 
     def create    
@@ -37,7 +37,7 @@ class WildlifeTrackersController < ApplicationController
             render json: animal.errors
         end
     end
-    
+
 
     private
 

@@ -1,7 +1,7 @@
 class SigthingsController < ApplicationController
 
     def index
-        sightings = Sigthing.all
+        sightings = Sigthing.where(date: params[:start_date]..params[:end_date])
         render json: sightings
     end 
 
@@ -42,7 +42,7 @@ class SigthingsController < ApplicationController
     private
 
     def sigthing_params
-        params.require(:sigthing).permit(:latitude,:longitude,:date,:wildlife_tracker_id)
+        params.require(:sigthing).permit(:latitude,:longitude,:date,:wildlife_tracker_id,:start_date, :end_date)
     end
 end
 
